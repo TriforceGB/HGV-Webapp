@@ -31,7 +31,12 @@ def submit():
     if request.method == 'POST':
         wantedTemp = request.form['tempInput']
         wantedHimid = request.form['humidityInput']
-        return wantedTemp+wantedHimid
+        
+        WT_Unit16 = floatToUint16(float(wantedTemp))
+        TH_Uint16 = floatToUint16(float(wantedHimid))
+        modbusClient.modbusWrite('hr',0,WT_Unit16, True)
+        modbusClient.modbusWrite('hr',2,TH_Uint16, True)
+        return redirect('/')
 
 
 # Runner and Dubgger

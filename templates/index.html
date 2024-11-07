@@ -67,19 +67,19 @@
                                         <present>Present temperature: {{roomTemp}}</present>
                                 </p>
                                 <slider>
-                                        <input type="range" min="0" max="30" value="15" disabled class="slider"
+                                        <input type="range" min="0" max="30" value="{{roomTemp}}" disabled class="slider"
                                                 id="PresentTemperature">
                                 </slider>
                                 <br>
                                 <label for="temperature">
-                                        <new>New temperature: </new>
+                                        <new>New temperature: {{wantedTemp}} </new>
                                 </label>
-                                <input name="tempInput" type="number" id="tempInput" min="0" max="30" value="15">
+                                <input name="tempInput" type="number" id="tempInput" min="0" max="30" value="{{wantedTemp}}">
                 <br>
                 <slider>
-                        <input type="range" min="0" max="30" value="15" class="slider" id="tempSlider">
+                        <input type="range" min="0" max="30" value="{{wantedTemp}}" class="slider" id="tempSlider">
                 </slider>
-                <p><span id="sliderValuetemp">15</span>°C</p>
+                <p><span id="sliderValuetemp">{{wantedTemp}}</span>°C</p>
                 </section>
 
 
@@ -91,7 +91,7 @@
                                 <present>Present humidity:{{roomHimid}}</present>
                         </p>
                         <slider>
-                                <input type="range" min="0" max="100" value="{{currentTemp}}" disabled class="slider"
+                                <input type="range" min="0" max="100" value="{{roomHimid}}" disabled class="slider"
                                         id="Present Humidity">
                                 <!-- Disabled bc no one's allowed to change it-->
                         </slider>
@@ -99,12 +99,12 @@
                         <label>
                                 <new>New humidity: </new>
                         </label>
-                        <input name="humidityInput" type="number" id="humidityInput" min="0" max="100" value="15">
+                        <input name="humidityInput" type="number" id="humidityInput" min="0" max="{{wantedHimid}}" value="15">
                         <br>
                         <slider>
-                                <input type="range" min="0" max="100" value="15" class="slider" id="humiditySlider">
+                                <input type="range" min="0" max="100" value="{{wantedHimid}}" class="slider" id="humiditySlider">
                         </slider>
-                        <p><span id="sliderValue">50</span>%</p>
+                        <p><span id="sliderValue">{{wantedHimid}}</span>%</p>
                 </section>
 
                 <!-- Done button-->
