@@ -49,7 +49,7 @@
 </head>
 
 <section>
-        <button><a href="https://hgvsupport.ddns.net/">Back</a></button><br>
+        <button onclick="window.location.href='https://hgvsupport.ddns.net//';">Back</button><br>
 </section>
 
 <body>
@@ -67,7 +67,7 @@
                                         <present>Current Temperature: {{roomTemp}}</present>
                                 </p>
                                 <slider>
-                                        <input type="range" min="0" max="30" value="{{roomTemp}}" disabled class="slider"
+                                        <input type="range" min="0" max="30" value="15" disabled class="slider"
                                                 id="PresentTemperature">
                                 </slider>
                                 <br>
@@ -91,7 +91,7 @@
                                 <present>Current humidity:{{roomHimid}}</present>
                         </p>
                         <slider>
-                                <input type="range" min="0" max="100" value="{{roomHimid}}" disabled class="slider"
+                                <input type="range" min="0" max="100" value="{{currentTemp}}" disabled class="slider"
                                         id="Present Humidity">
                                 <!-- Disabled bc no one's allowed to change it-->
                         </slider>
