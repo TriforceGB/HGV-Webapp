@@ -64,15 +64,15 @@
                         <section>
                                 <h2><u>Temperature Adjustment</u></h2>
                                 <p>
-                                        <present>Current Temperature: {{roomTemp}}</present>
+                                        <present>Current Temperature: {{roomTemp}}°C</present>
                                 </p>
                                 <slider>
-                                        <input type="range" min="0" max="30" value="15" disabled class="slider"
+                                        <input type="range" min="0" max="30" value="{{roomTemp}}" disabled class="slider"
                                                 id="PresentTemperature">
                                 </slider>
                                 <br>
                                 <label for="temperature">
-                                        <new>Set Temperature: {{SetTemp}} </new>
+                                        <new>Set Temperature: {{SetTemp}}°C</new>
                                 </label>
                                 <input name="InputTemp" type="number" id="InputTemp" min="0" max="30" value="{{SetTemp}}">
                 <br>
@@ -88,16 +88,16 @@
                         <h2><u>Humidity Adjustment</u></h2>
 
                         <p>
-                                <present>Current humidity:{{roomHimid}}</present>
+                                <present>Current humidity: {{roomHimid}}%</present>
                         </p>
                         <slider>
-                                <input type="range" min="0" max="100" value="{{currentTemp}}" disabled class="slider"
+                                <input type="range" min="0" max="100" value="{{roomHimid}}" disabled class="slider"
                                         id="Present Humidity">
                                 <!-- Disabled bc no one's allowed to change it-->
                         </slider>
                         <br>
                         <label>
-                                <new>Set humidity: </new>
+                                <new>Set humidity: {{SetHimid}}%</new>
                         </label>
                         <input name="InputHimid" type="number" id="InputHimid" min="0" max=100 value={{SetHimid}}>
                         <br>
