@@ -20,22 +20,22 @@ connection = modbusClient.modbusConnect()
 def index():
     IR = modbusClient.modbusRead('ir',0,6)
     HR = modbusClient.modbusRead('hr',0,4)
-    wantedTemp = floatConvertion(HR[0], HR[1])
-    wantedHimid = floatConvertion(HR[2], HR[3]) 
+    SetTemp = floatConvertion(HR[0], HR[1])
+    SetHimid = floatConvertion(HR[2], HR[3]) 
     roomTemp = floatConvertion(IR[0], IR[1])
     roomHimid = floatConvertion(IR[4], IR[5])
-    return render_template('index.html',roomTemp=roomTemp, roomHimid=roomHimid, wantedTemp=wantedTemp, wantedHimid=wantedHimid)
+    return render_template('index.html',roomTemp=roomTemp, roomHimid=roomHimid, SetTemp=SetTemp, SetHimid=SetHimid)
 
 @app.route('/submit',methods=['POST'])
 def submit():
     if request.method == 'POST':
-        wantedTemp = request.form['tempInput']
-        wantedHimid = request.form['humidityInput']
+        InputTemp = request.form['InputTemp']
+        InputHimid = request.form['InputHimid']
         
-        WT_Unit16 = floatToUint16(float(wantedTemp))
-        TH_Uint16 = floatToUint16(float(wantedHimid))
-        modbusClient.modbusWrite('hr',0,WT_Unit16, True)
-        modbusClient.modbusWrite('hr',2,TH_Uint16, True)
+        ST_Unit16 = floatToUint16(float(InputTemp))
+        SH_Uint16 = floatToUint16(float(InputHimid))
+        modbusClient.modbusWrite('hr',0,ST_Unit16, True)
+        modbusClient.modbusWrite('hr',2,SH_Uint16, True)
         return redirect('/')
 
 

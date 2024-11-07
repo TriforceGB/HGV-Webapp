@@ -64,7 +64,7 @@
                         <section>
                                 <h2><u>Temperature Adjustment</u></h2>
                                 <p>
-                                        <present>Present temperature: {{roomTemp}}</present>
+                                        <present>Current Temperature: {{roomTemp}}</present>
                                 </p>
                                 <slider>
                                         <input type="range" min="0" max="30" value="{{roomTemp}}" disabled class="slider"
@@ -72,14 +72,14 @@
                                 </slider>
                                 <br>
                                 <label for="temperature">
-                                        <new>New temperature: {{wantedTemp}} </new>
+                                        <new>Set Temperature: {{SetTemp}} </new>
                                 </label>
-                                <input name="tempInput" type="number" id="tempInput" min="0" max="30" value="{{wantedTemp}}">
+                                <input name="InputTemp" type="number" id="InputTemp" min="0" max="30" value="{{SetTemp}}">
                 <br>
                 <slider>
-                        <input type="range" min="0" max="30" value="{{wantedTemp}}" class="slider" id="tempSlider">
+                        <input type="range" min="0" max="30" value="{{SetTemp}}" class="slider" id="tempSlider">
                 </slider>
-                <p><span id="sliderValuetemp">{{wantedTemp}}</span>°C</p>
+                <p><span id="sliderValuetemp">{{SetTemp}}</span>°C</p>
                 </section>
 
 
@@ -88,7 +88,7 @@
                         <h2><u>Humidity Adjustment</u></h2>
 
                         <p>
-                                <present>Present humidity:{{roomHimid}}</present>
+                                <present>Current humidity:{{roomHimid}}</present>
                         </p>
                         <slider>
                                 <input type="range" min="0" max="100" value="{{roomHimid}}" disabled class="slider"
@@ -97,14 +97,14 @@
                         </slider>
                         <br>
                         <label>
-                                <new>New humidity: </new>
+                                <new>Set humidity: </new>
                         </label>
-                        <input name="humidityInput" type="number" id="humidityInput" min="0" max=100 value={{wantedHimid}}>
+                        <input name="InputHimid" type="number" id="InputHimid" min="0" max=100 value={{SetHimid}}>
                         <br>
                         <slider>
-                                <input type="range" min="0" max="100" value="{{wantedHimid}}" class="slider" id="humiditySlider">
+                                <input type="range" min="0" max="100" value="{{SetHimid}}" class="slider" id="humiditySlider">
                         </slider>
-                        <p><span id="sliderValue">{{wantedHimid}}</span>%</p>
+                        <p><span id="sliderValue">{{SetHimid}}</span>%</p>
                 </section>
 
                 <!-- Done button-->
@@ -122,18 +122,18 @@
 
                 // For temperature
                 var tempSlider = document.getElementById("tempSlider");
-                var tempInput = document.getElementById("tempInput");
+                var InputTemp = document.getElementById("InputTemp");
                 var sliderValuetemp = document.getElementById("sliderValuetemp");
 
                 // Update the slider value and the displayed value when the slider is changed
                 tempSlider.oninput = function () {
                         sliderValuetemp.textContent = this.value;
-                        tempInput.value = this.value;
+                        InputTemp.value = this.value;
                 }
 
                 // Update the slider and displayed value when a value is entered in the input field
-                tempInput.addEventListener("input", function () {
-                        var tempValue = tempInput.value;
+                InputTemp.addEventListener("input", function () {
+                        var tempValue = InputTemp.value;
                         if (tempValue >= 0 && tempValue <= 30) { // Ensure the value is within the range of the slider
                                 tempSlider.value = tempValue;
                                 sliderValuetemp.textContent = tempValue;
@@ -142,7 +142,7 @@
 
                 // For humidity
                 var slider = document.getElementById("humiditySlider");
-                var input = document.getElementById("humidityInput");
+                var input = document.getElementById("InputHimid");
                 var sliderValue = document.getElementById("sliderValue");
                 /*
                 Takes the thing named "demo" or "myRange"
