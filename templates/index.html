@@ -64,7 +64,7 @@
                         <section>
                                 <h2><u>Temperature Adjustment</u></h2>
                                 <p>
-                                        <present>Present temperature: </present>
+                                        <present>Present temperature: {{roomTemp}}</present>
                                 </p>
                                 <slider>
                                         <input type="range" min="0" max="30" value="15" disabled class="slider"
@@ -88,7 +88,7 @@
                         <h2><u>Humidity Adjustment</u></h2>
 
                         <p>
-                                <present>Present humidity: </present>
+                                <present>Present humidity:{{roomHimid}}</present>
                         </p>
                         <slider>
                                 <input type="range" min="0" max="100" value="{{currentTemp}}" disabled class="slider"
