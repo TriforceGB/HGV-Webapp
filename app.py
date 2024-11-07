@@ -18,35 +18,25 @@ connection = modbusClient.modbusConnect()
 #Home Page
 @app.route('/',methods=['POST', 'GET'])
 def index():
-    if request.method == 'POST':
-        wantedTemp = request.form['wantedTemp']
-        wantedHimid = request.form['wantedHumidity']
-        
-        try:
-            print(wantedHimid, wantedTemp)
-            return wantedHimid+wantedTemp
-            # WT_Unit16 = floatToUint16(float(wantedTemp))
-            # modbusClient.modbusWrite('hr',0,WT_Unit16, True)
-            # return redirect('/')
-        except Exception as e:
-            print(f"ERROR: {e}")
-            return redirect('/')
-    # See all current tasks
-    else:
-        IR = modbusClient.modbusRead('ir',0,6)
-        HR = modbusClient.modbusRead('hr',0,4)
-        wantedTemp = floatConvertion(HR[0], HR[1])
-        wantedHimid = floatConvertion(HR[2], HR[3]) 
-        roomTemp = floatConvertion(IR[0], IR[1])
-        roomHimid = floatConvertion(IR[4], IR[5])
-        return render_template('index.html',roomTemp=roomTemp, roomHimid=roomHimid, wantedTemp=wantedTemp, wantedHimid=wantedHimid)
+    IR = modbusClient.modbusRead('ir',0,6)
+    HR = modbusClient.modbusRead('hr',0,4)
+    wantedTemp = floatConvertion(HR[0], HR[1])
+    wantedHimid = floatConvertion(HR[2], HR[3]) 
+    roomTemp = floatConvertion(IR[0], IR[1])
+    roomHimid = floatConvertion(IR[4], IR[5])
+    return render_template('index.html',roomTemp=roomTemp, roomHimid=roomHimid, wantedTemp=wantedTemp, wantedHimid=wantedHimid)
 
-@app.route('/submit',methods=['POST', 'GET'])
+@app.route('/submit',methods=['POST'])
 def submit():
-    
-    wantedTemp = request.form['tempInput']
-    wantedHimid = request.form['humidityInput']
-    return wantedTemp+wantedHimid
+    if request.method == 'POST':
+        wantedTemp = request.form['tempInput']
+        wantedHimid = request.form['humidityInput']
+        
+        WT_Unit16 = floatToUint16(float(wantedTemp))
+        TH_Uint16 = floatToUint16(float(wantedHimid))
+        modbusClient.modbusWrite('hr',0,WT_Unit16, True)
+        modbusClient.modbusWrite('hr',2,TH_Uint16, True)
+        return redirect('/')
 
 
 # Runner and Dubgger
