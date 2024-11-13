@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+<script type="text/javascript"> 
+        console.log("testing socket");       
+        var socket = io.connect('http://localhost:5000')
 
+
+        socket.on('connect', function() {
+                console.log("Connected to server");  // Debugging log
+            });
+
+            
+        console.log("Got back init socket");  
+        socket.on('CurrentRoomData', function(data) {
+                // Update the HTML content with the received data
+                console.log("New data received:", data);  // Debugging log
+                document.getElementById('temperature').textContent = data.CurrentTemp;
+                document.getElementById("currentHumidDisplay").textContent = test + CurrentHumid;
+            });
+</script>
+
+<div id="data">
+        <p>Temperature: <span id="temperature">N/A</span>°C</p>
+        <p>Humidity: <span id="humidity">N/A</span>%</p>
+    </div>
+
+
+
+<button id="new data"></button>
 <head>
         <title>Temperature and Humidity Readings</title>
         <meta charset="UTF-8">
