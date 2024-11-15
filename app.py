@@ -15,9 +15,23 @@ unitID = 1
 
 modbusClient = Modbus(ModbusHost,Modbusport,unitID)
 connection = modbusClient.modbusConnect()    
+
 #Home Page
-@app.route('/',methods=['POST', 'GET'])
-def index():
+@app.route('/')
+def home():
+    return render_template('homepage.html')
+
+
+@app.route('/ssa')
+def ssa():
+    return render_template('SSA.html')
+
+@app.route('/weather')
+def weather():
+    return render_template('weather.html')
+
+@app.route('/temperature-adjustment',methods=['POST', 'GET'])
+def temperature_adjustment():
     IR = modbusClient.modbusRead('ir',0,6)
     HR = modbusClient.modbusRead('hr',0,4)
     SetTemp = floatConvertion(HR[0], HR[1])
@@ -36,7 +50,11 @@ def submit():
         SH_Uint16 = floatToUint16(float(InputHimid))
         modbusClient.modbusWrite('hr',0,ST_Unit16, True)
         modbusClient.modbusWrite('hr',2,SH_Uint16, True)
-        return redirect('/')
+        return redirect('/temperature-adjustment')
+    
+
+
+
 
 
 # Runner and Dubgger
