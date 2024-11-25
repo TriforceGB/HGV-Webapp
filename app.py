@@ -24,9 +24,9 @@ def home():
 #items go in order of the Homepage
 
 
-@app.route('/activties')
+@app.route('/activities')
 def activties():
-    return render_template('activties.html')
+    return render_template('activities.html')
 
 @app.route('/sales')
 def sales():
