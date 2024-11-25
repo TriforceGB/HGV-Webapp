@@ -1,0 +1,7 @@
+# Caddyfile
+
+sensors.hgvsupport.ddns.net{
+	root * /var/www/html
+	method GET POST
+	file_server
+}
