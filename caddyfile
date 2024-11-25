@@ -1,0 +1,10 @@
+# Caddyfile
+
+sensors.hgvsupport.ddns.net{
+	proxy / 127.0.0.1:5000 {
+		header_upstream Host {host} 
+        header_upstream X-Real-IP {remote} 
+        header_upstream X-Forwarded-For {remote} 
+        websocket 
+	}
+}
