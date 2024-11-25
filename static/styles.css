@@ -1,7 +1,7 @@
 body {
 
 background-color: #ADC9C6;
-//background-color: #64F2E3;
+/*background-color: #64F2E3;*/
 font-family: Arial, sans-serif;
 
 }
@@ -24,6 +24,13 @@ color: white;
 font-size: 15px;
 padding:5px 10px;
 
-
 }
 
+.form-container {
+width: 100%;
+max-width: 500px;
+margin: 0 auto;
+padding: 20px;
+background-color: #2b6894;
+color: white;
+}

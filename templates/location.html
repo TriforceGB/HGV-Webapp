@@ -7,11 +7,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Main screen.">
-        <link rel="stylesheet" href="styles.css">
+        <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+      />
 
 </head>
 
 <body>
-    <button onclick="window.location.href='homepage.html'">< Back</button>
+    <button onclick="window.location.href='/'">Back</button>
     <h1 style="text-align: center;"> Location </h1>
 </body>

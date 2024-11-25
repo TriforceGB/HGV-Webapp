@@ -21,16 +21,44 @@ connection = modbusClient.modbusConnect()
 def home():
     return render_template('homepage.html')
 
+#items go in order of the Homepage
 
+
+@app.route('/activties')
+def activties():
+    return render_template('activties.html')
+
+@app.route('/sales')
+def sales():
+    return render_template('sales.html')
+
+@app.route('/location')
+def location():
+    return render_template('location.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contactinfo.html')
+
+@app.route('/rotary')
+def rotary():
+    return render_template('rotary.html')
+    
+@app.route('/report')
+def report():
+    return render_template('reportprob.html')
+
+
+#Everything In the Ssa directory
 @app.route('/ssa')
 def ssa():
     return render_template('SSA.html')
 
-@app.route('/weather')
+@app.route('/ssa/weather')
 def weather():
     return render_template('weather.html')
 
-@app.route('/temperature-adjustment',methods=['POST', 'GET'])
+@app.route('/ssa/temperature-adjustment',methods=['POST', 'GET'])
 def temperature_adjustment():
     IR = modbusClient.modbusRead('ir',0,6)
     HR = modbusClient.modbusRead('hr',0,4)
@@ -51,6 +79,8 @@ def submit():
         modbusClient.modbusWrite('hr',0,ST_Unit16, True)
         modbusClient.modbusWrite('hr',2,SH_Uint16, True)
         return redirect('/temperature-adjustment')
+    
+
     
 
 
