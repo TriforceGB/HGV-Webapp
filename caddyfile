@@ -1,10 +1,16 @@
-# Caddyfile
+sensors.hgvsupport.ddns.net, localhost, 127.0.0.1, 192.168.3.124 {
+        # Set this path to your site's directory.
+        # root * /var/www/html
 
-sensors.hgvsupport.ddns.net{
-	proxy / 127.0.0.1:5000 {
-		header_upstream Host {host} 
-        header_upstream X-Real-IP {remote} 
-        header_upstream X-Forwarded-For {remote} 
-        websocket 
-	}
+        # Enable the static file server.
+        file_server
+
+        # Another common task is to set up a reverse proxy:
+        reverse_proxy localhost:5555
+
+        # Or serve a PHP site through php-fpm:
+        # php_fastcgi localhost:9000
 }
+
+
+
