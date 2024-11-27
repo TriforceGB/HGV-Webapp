@@ -2,6 +2,7 @@
 
 sensors.hgvsupport.ddns.net{
 	root * /var/www/html
+	php_fastcgi unix//run/php/php8.1-fpm.sock
 	method GET POST
 	file_server
 }
