@@ -5,6 +5,7 @@ from unit16_converters import floatToUint16, floatConvertion
 from ModbusTCPClient import Modbus
 from datetime import datetime
 
+
 # My App Setup
 app = Flask(__name__)
 Scss(app)
@@ -46,7 +47,7 @@ def rotary():
     
 @app.route('/report')
 def report():
-    return render_template('reportprob.html')
+    return render_template('index.html')
 
 
 #Everything In the Ssa directory
@@ -82,6 +83,26 @@ def submit():
     
 
     
+app = Flask(__name__)
+
+@app.route('/send-email', methods=['GET', 'POST'])
+def send_email():
+    print(f"Request Method: {request.method}")
+    if request.method == 'POST':
+        # Get subject and message from the form
+        subject = request.form['subject']
+        message = request.form['message']
+       
+        # Hard-code the recipient's email
+        recipient = 'zsaiyed@gmail.com'  # Replace with the desired recipient email
+
+        # Create the mailto link with the subject and body
+        mailto_link = f"mailto:{recipient}?subject={subject}&body={message}"
+
+        # Redirect the user to their email client (Gmail in this case)
+        return redirect(mailto_link)
+
+    return render_template('index.html')
 
 
 

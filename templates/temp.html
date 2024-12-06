@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Temperature and Humidity Readings</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- "Viewport meta tag" sounds SICK!-->
+    <meta
+      name="description"
+      content="Show readings as well as options of adjusting."
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <style>
+      h2 {
+        color: black;
+        font-style: normal;
+      }
+
+      changeFont {
+        /*It's like void(){}!*/
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      present {
+        color: green;
+        /* SO COOL!! */
+      }
+
+      new {
+        color: red;
+      }
+
+      input {
+        margin: 5px;
+      }
+
+      .slider {
+        background: #d3d3d3;
+        width: 50%;
+        height: 25px;
+        cursor: grab;
+      }
+    </style>
+  </head>
+
+  <button onclick="window.location.href='/ssa'">Back</button>
+  <body>
+    <changeFont>
+      <h1 style="text-align: center">
+        <em>Temperature and Humidity Readings</em>
+      </h1>
+      <p style="text-align: center">
+        To change temperature or humidity, enter number or tap the + or -
+        buttons for the same purpose.<br />
+        "Present" reading will gradually change to match the new selection.
+      </p>
+
+      <form action="/submit" method="POST">
+        <!-- Temperature stuff-->
+        <section>
+          <h2><u>Temperature Adjustment</u></h2>
+          <p>
+            <present>Current Temperature: {{roomTemp}}°C</present>
+          </p>
+          <slider>
+            <input
+              type="range"
+              min="0"
+              max="30"
+              value="{{roomTemp}}"
+              disabled
+              class="slider"
+              id="PresentTemperature"
+            />
+          </slider>
+          <br />
+          <label for="temperature">
+            <new>Set Temperature: {{SetTemp}}°C</new>
+          </label>
+          <input
+            name="InputTemp"
+            type="number"
+            id="InputTemp"
+            min="0"
+            max="30"
+            value="{{SetTemp}}"
+          />
+          <br />
+          <slider>
+            <input
+              type="range"
+              min="0"
+              max="30"
+              value="{{SetTemp}}"
+              class="slider"
+              id="tempSlider"
+            />
+          </slider>
+          <p><span id="sliderValuetemp">{{SetTemp}}</span>°C</p>
+        </section>
+
+        <!-- Humidity stuff-->
+        <section>
+          <h2><u>Humidity Adjustment</u></h2>
+
+          <p>
+            <present>Current humidity: {{roomHimid}}%</present>
+          </p>
+          <slider>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="{{roomHimid}}"
+              disabled
+              class="slider"
+              id="Present Humidity"
+            />
+            <!-- Disabled bc no one's allowed to change it-->
+          </slider>
+          <br />
+          <label>
+            <new>Set humidity: {{SetHimid}}%</new>
+          </label>
+          <input
+            name="InputHimid"
+            type="number"
+            id="InputHimid"
+            min="0"
+            max="100"
+            value="{{SetHimid}}"
+          />
+          <br />
+          <slider>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="{{SetHimid}}"
+              class="slider"
+              id="humiditySlider"
+            />
+          </slider>
+          <p><span id="sliderValue">{{SetHimid}}</span>%</p>
+        </section>
+
+        <!-- Done button-->
+        <section>
+          <br />
+          <button id="doneButton" type="submit">Done?</button>
+        </section>
+      </form>
+    </changeFont>
+    <!-- Go to changeFont section in style to change font of all text-->
+    <!-- Honestly, being able to create your own tags is pretty sick-->
+
+    <script>
+      // For temperature
+      var tempSlider = document.getElementById("tempSlider");
+      var InputTemp = document.getElementById("InputTemp");
+      var sliderValuetemp = document.getElementById("sliderValuetemp");
+
+      // Update the slider value and the displayed value when the slider is changed
+      tempSlider.oninput = function () {
+        sliderValuetemp.textContent = this.value;
+        InputTemp.value = this.value;
+      };
+
+      // Update the slider and displayed value when a value is entered in the input field
+      InputTemp.addEventListener("input", function () {
+        var tempValue = InputTemp.value;
+        if (tempValue >= 0 && tempValue <= 30) {
+          // Ensure the value is within the range of the slider
+          tempSlider.value = tempValue;
+          sliderValuetemp.textContent = tempValue;
+        }
+      });
+
+      // For humidity
+      var slider = document.getElementById("humiditySlider");
+      var input = document.getElementById("InputHimid");
+      var sliderValue = document.getElementById("sliderValue");
+      /*
+                Takes the thing named "demo" or "myRange"
+                and stores it in variable
+                */
+      slider.oninput = function () {
+        sliderValue.textContent = this.value;
+        input.value = this.value;
+      };
+
+      input.addEventListener("input", function () {
+        var value = input.value;
+        if (value >= 0 && value <= 100) {
+          // Ensure the value is within the range of the slider
+          slider.value = value; // Update the slider
+          sliderValue.textContent = value;
+        }
+      });
+    </script>
+  </body>
+</html>
