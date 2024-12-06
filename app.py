@@ -67,7 +67,7 @@ def temperature_adjustment():
     SetHimid = floatConvertion(HR[2], HR[3]) 
     roomTemp = floatConvertion(IR[0], IR[1])
     roomHimid = floatConvertion(IR[4], IR[5])
-    return render_template('index.html',roomTemp=roomTemp, roomHimid=roomHimid, SetTemp=SetTemp, SetHimid=SetHimid)
+    return render_template('temp.html',roomTemp=roomTemp, roomHimid=roomHimid, SetTemp=SetTemp, SetHimid=SetHimid)
 
 @app.route('/submit',methods=['POST'])
 def submit():
@@ -80,14 +80,10 @@ def submit():
         modbusClient.modbusWrite('hr',0,ST_Unit16, True)
         modbusClient.modbusWrite('hr',2,SH_Uint16, True)
         return redirect('/temperature-adjustment')
-    
-
-    
-app = Flask(__name__)
 
 @app.route('/send-email', methods=['GET', 'POST'])
 def send_email():
-    print(f"Request Method: {request.method}")
+    print(f"Request Method: {request.method}") #Not Needed? Debug ig
     if request.method == 'POST':
         # Get subject and message from the form
         subject = request.form['subject']
