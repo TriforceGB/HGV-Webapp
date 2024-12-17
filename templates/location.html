@@ -2,19 +2,24 @@
 <html lang="en">
 
 <head>
-<title>Location</title>
+  <title>Location</title>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Main screen.">
-        <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='styles.css') }}"
-      />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Location.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 
 </head>
 
 <body>
-    <button onclick="window.location.href='/'">Back</button>
-    <h1 style="text-align: center;"> Location </h1>
+  <div id="header">
+  <script>
+    fetch('/header')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data)
+  </script>
+  </div>
+
+  <button onclick="window.location.href='/'">Back</button>
+  <h1 style="text-align: center;"> Location </h1>
 </body>

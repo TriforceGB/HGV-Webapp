@@ -39,7 +39,7 @@ def location():
 
 @app.route('/contact')
 def contact():
-    return render_template('contactinfo.html')
+    return render_template('contactInfo.html')
 
 @app.route('/rotary')
 def rotary():
@@ -47,7 +47,7 @@ def rotary():
     
 @app.route('/report')
 def report():
-    return render_template('index.html')
+    return render_template('reportprob.html')
 
 
 #Everything In the Ssa directory
@@ -58,6 +58,10 @@ def ssa():
 @app.route('/ssa/weather')
 def weather():
     return render_template('weather.html')
+
+@app.route('/header')
+def header():
+    return render_template('header.html')
 
 @app.route('/ssa/temperature-adjustment',methods=['POST', 'GET'])
 def temperature_adjustment():
@@ -98,7 +102,7 @@ def send_email():
         # Redirect the user to their email client (Gmail in this case)
         return redirect(mailto_link)
 
-    return render_template('index.html')
+    return render_template('reportprob.html')
 
 
 

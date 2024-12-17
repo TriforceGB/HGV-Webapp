@@ -1,36 +1,203 @@
 body {
 
-background-color: #ADC9C6;
-/*background-color: #64F2E3;*/
-font-family: Arial, sans-serif;
+    background-color: #ADC9C6;
+    /*background-color: #64F2E3;*/
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    height:100%;
+    overflow-x:hidden;
 
+}
+
+body.no-scroll{
+    overflow-y:hidden;
+}
+
+.container{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    height:100%;
+    position:relative;
+    padding: 20px;
+}
+
+.content{
+    text-align:center;
+    margin-bottom:40px;
+    margin-top: 40px;
+    
+}
+
+.container img{
+    position: absolute;
+    top:0;
+    right:0;
+    max-width:500%;
+    height:auto;
+    flex-basis: 50%;
+    padding:20px;
 }
 
 button {
 
-margin-right: 10px;
-margin-left: 20px;
-margin-top: 20px;
-margin-bottom: 20px;
-font-weight: bold;
-cursor: pointer;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    cursor: pointer;
 
 }
 
 .blue-button {
 
-background-color: #049FE7;
-color: white;
-font-size: 15px;
-padding:5px 10px;
+    background-color: #049FE7;
+    color: white;
+    font-size: 15px;
+    padding: 5px 10px;
 
 }
 
+
+.blue-button:hover{
+    background-color: #82b8c5;
+}
+
 .form-container {
-width: 100%;
-max-width: 500px;
-margin: 0 auto;
-padding: 20px;
-background-color: #2b6894;
-color: white;
+    width: 50%;
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2b6894;
+    color: white;
+}
+
+header {
+    overflow: hidden;
+    top:-80px;
+    transition: top 0.3s ease;
+    
+    background-color: #2b6894 !important;
+    width: 100vw;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  z-index:1;
+  position:fixed;
+
+}
+
+body:hover header{
+    top:0;
+}
+
+nav {
+    text-align: center;
+    padding: 12px 10px;
+    text-decoration: none;
+    font-size: 18px;
+    align-items: center;
+
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 0px 13px;
+    gap: 50px;
+    border-right: 2px solid white;
+    font-weight: 700;
+    display: inline-block;
+
+}
+
+select {
+    background-color: #2b6894;
+    display: inline-block;
+    color:white;
+   text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    outline:none;
+    
+}
+
+select a {
+    display: block;
+    background-color: #2b6894;
+    color: white;
+    font-weight: 700;
+    outline:none;   
+}
+
+select:focus { /* Can't tell if hover or focus looks better... */
+
+    background-color: gray;
+
+}
+
+/* For different screen sizes */
+
+@media (max-width:768px){
+    header{
+        padding: 0px 0px;
+        font-size:15px;
+    }
+    nav{
+        padding:5px;
+        gap:10px;
+        font-size:15px
+    }
+    select{
+        font-size:15px;
+    }
+}
+
+@media (max-width: 480px){
+    header{
+    padding: 0px 0px;
+    font-size: 11px;
+    }
+    nav{
+        padding:2px;
+        font-size:11px;
+        gap:5px;
+    }
+    select{
+        font-size:11px
+    }
+}
+
+@media (max-width:640px){
+    .container img{
+        max-width:380%;
+    }
+    .content{
+        margin-top:80px;
+    }
+
+    .blue-button{
+        font-size:13px;
+        padding: 6px 12px;
+    }
+
+    h1{
+        font-size: 24px;
+    }
+    h2{
+        font-size: 17px;
+    }
+    p, new{
+        font-size:13px;
+    }
+}|
+
+textarea{
+    width: 300px;
+height: 200px;
+    overflow:auto;
 }

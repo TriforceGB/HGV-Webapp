@@ -25,25 +25,42 @@
             color: white;
         }
     </style>
+
+
+
 </head>
 
 <body>
-    <button onclick="window.location.href='/'">Back</button>
+
+    <div id="header">
+        <script>
+          fetch('/header')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data)
+        </script>
+        </div>
+<br>
+<br>
+<br>
+<br>
     <h1 style="text-align: center">Report a Problem</h1>
     <div class="form-container">
-        <!-- Form is presented first -->
-        <form method="POST" action="/send-email">
-            <label for="subject">Subject:</label>
+       <!-- Form -->
+        <form method="POST" action="/send-email" id="report-form">
+            <h4><label for="subject">Subject:</label></h4>
             <input type="text" id="subject" name="subject" required><br>
             
-            <label for="message">Message:</label>
+            <h4><label for="message">Message:</label></h4>
             <textarea id="message" name="message" required></textarea><br>
-
-            <button type="submit">Submit</button>
-            <button type="reset">Clear Form</button>
+<br>
+            <button type="submit">Submit using Gmail</button>
+            <button type="button" onclick="confirmClearForm()">Clear Form</button>
         </form>
-        <h4>Try it now!</h4>
+     
     </div>
+
+
+<script src="/static/script.js"></script>
 </body>
 
 </html>

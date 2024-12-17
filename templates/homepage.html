@@ -2,36 +2,37 @@
 <html lang="en">
 
 <head>
-<title>HOMEPAGE</title>
+  <title>HOMEPAGE</title>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- "Viewport meta tag" sounds SICK!-->
-        <meta name="description" content="Main screen.">
-        <link
-          rel="stylesheet"
-          href="{{ url_for('static', filename='styles.css') }}"
-        />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- "Viewport meta tag" sounds SICK!-->
+  <meta name="description" content="Main screen.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 
 </head>
 
 <body style="padding:0; margin:0;">
 
-<br>
-<h1 style="text-align: center;"> HOMEPAGE </h1>
+  <div class="container">
+    <div class="content">
+      <br>
+      <h1 style="text-align: center;"> HOMEPAGE </h1>
 
+      <button onclick="window.location.href='/activities'" class="blue-button">Activities</button>
+      <button onclick="window.location.href='/sales'" class="blue-button">Sales</button>
+      <button onclick="window.location.href='/location'" class="blue-button">Location</button>
+      <button onclick="window.location.href='/contact'" class="blue-button">Contact Information</button>
+      <button onclick="window.location.href='/rotary'" class="blue-button">Rotary</button>
+      <button onclick="window.location.href='/report'" class="blue-button" style="text-align:right">Report a
+        Problem</button>
+      <button onclick="window.location.href='/ssa'" class="blue-button" style="text-align:right;">SSA
+        [secret...]</button>
+    </div>
 
-<button onclick="window.location.href='/activities'"class="blue-button">Activities</button>
-<button onclick="window.location.href='/sales'"class="blue-button">Sales</button>
-<button onclick="window.location.href='/location'"class="blue-button">Location</button>
-<button onclick="window.location.href='/contact'"class="blue-button">Contact Information</button>
-<button onclick="window.location.href='/rotary'"class="blue-button">Rotary</button>
-<button onclick="window.location.href='/report'" class="blue-button" style="text-align:right">Report a Problem</button>
-<button onclick="window.location.href='/ssa'" class="blue-button" style="text-align:right;">SSA [secret...]</button>
-
-<div style="text-align:right; position: absolute; top:0; right:0; padding:20px">
-<img src="{{ url_for('static', filename='pictures/HGVhomepage.png') }}" alt="Example Image">
-</div>
+    <div style="text-align:right; position: absolute; top:0; right:0; padding:20px">
+      <img src="{{ url_for('static', filename='pictures/HGVhomepage.png') }}" alt="Example Image">
+    </div>
+  </div>
 
 </body>
-

@@ -15,6 +15,15 @@
 </head>
 
 <body>
+
+    <div id="header">
+        <script>
+          fetch('/header')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data)
+        </script>
+        </div>
+
     <button onclick="window.location.href='/'">Back</button>
 `   <h1 style="text-align: center"> Rotary</h1>
     <a href="https://www.rotary.org/en">Check it out!</a>

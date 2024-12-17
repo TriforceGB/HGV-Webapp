@@ -13,6 +13,15 @@
   </head>
 
   <body>
+
+    <div id="header">
+      <script>
+        fetch('/header')
+          .then(response => response.text())
+          .then(data => document.getElementById('header').innerHTML = data)
+      </script>
+      </div>
+
     <button onclick="window.location.href='/ssa'">Back</button>
 
     <h1 style="text-align: center">Weather</h1>

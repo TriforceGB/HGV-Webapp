@@ -14,6 +14,7 @@
       href="{{ url_for('static', filename='styles.css') }}"
     />
     <style>
+
       h2 {
         color: black;
         font-style: normal;
@@ -46,8 +47,19 @@
     </style>
   </head>
 
-  <button onclick="window.location.href='/ssa'">Back</button>
   <body>
+
+    <div id="header">
+      <script>
+        fetch('/header')
+          .then(response => response.text())
+          .then(data => document.getElementById('header').innerHTML = data)
+      </script>
+      </div>
+  <br>
+  <br>
+  <br>
+  <br>
     <changeFont>
       <h1 style="text-align: center">
         <em>Temperature and Humidity Readings</em>
@@ -57,7 +69,9 @@
         buttons for the same purpose.<br />
         "Present" reading will gradually change to match the new selection.
       </p>
+      <br>
 
+      <div style="margin-left:70px;">
       <form action="/submit" method="POST">
         <!-- Temperature stuff-->
         <section>
@@ -201,5 +215,6 @@
         }
       });
     </script>
-  </body>
+    </div>
+</body>
 </html>
